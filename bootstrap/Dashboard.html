@@ -109,7 +109,7 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
+                        <a class="collapse-item" href="index.html">Login</a>
                         <a class="collapse-item" href="register.html">Register</a>
                         <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                         <div class="collapse-divider"></div>
@@ -362,7 +362,7 @@
                         </div>
                     </div>
                     <div>
-                        <img src="Gedung_lt7.png" class="card-img-top img-fluid" alt="">
+                        <img src="DENAH GEDUNG 7 NEW.png" class="card-img-top img-fluid" alt="">
                     </div>
                     <hr>
                     <!-- Content Row -->
@@ -592,11 +592,14 @@
                         </div>
                         <div class="col-auto mb-4">
                             <div class="card bg-secondary text-white shadow"
-                                style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked()">
+                                style="width: 120px; height: 120px; cursor: pointer;" onclick="handleCardClicked(this)">
                                 <div class="card-body">
                                     LKB.1
                                     <div class="text-white-50 small">Pending</div>
                                 </div>
+                            </div>
+                            <div class="card-description mt-3" style="display: none;">
+                                <p>This is the expanded description for LKJ.3.</p>
                             </div>
                         </div>
                     </div>
@@ -675,8 +678,18 @@
             }
             // Fungsi yang dipanggil saat card ditekan
             function enlargeCard(card) {
-                card.style.width = '200px';
-                card.style.height = '200px';
+                // Toggle the 'active' class on the clicked card
+                card.classList.toggle('active');
+
+                // Find the description element next to the clicked card
+                var description = card.nextElementSibling;
+
+                // Toggle the display property of the description element
+                if (description.style.display === 'none' || description.style.display === '') {
+                    description.style.display = 'block';
+                } else {
+                    description.style.display = 'none';
+                }
             }
             function handleCardClicked(card) {
                 cardClicked();

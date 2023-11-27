@@ -13,9 +13,7 @@
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -30,6 +28,11 @@
 </head>
 
 <body id="page-top">
+    <!-- PHP KONEKSI -->
+    <?php
+    include('php/koneksi.php');
+    ?>
+    <!-- END PHP KONEKSI -->
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -38,7 +41,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion " id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="Dashboard.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="Dashboard.php">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-cat"></i>
                 </div>
@@ -50,7 +53,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="Dashboard.html">
+                <a class="nav-link" href="Dashboard.php">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -65,8 +68,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-door-closed"></i>
                     <span>Lantai</span>
                 </a>
@@ -74,42 +76,21 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Pilih Lantai:</h6>
                         <a href="#" class="collapse-item">Lantai 7</a>
-                        <a href="Dashboard_2.html" class="collapse-item">Lantai 8</a>
+                        <a href="Dashboard_2.php" class="collapse-item">Lantai 8</a>
                     </div>
                 </div>
             </li>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-window-close"></i>
-                    <span>Utilities</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
-                    </div>
-                </div>
-            </li> -->
-
-
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Pages</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="index.html">Login</a>
+                        <a class="collapse-item" href="index.php">Login</a>
                         <a class="collapse-item" href="register.html">Register</a>
                         <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                         <div class="collapse-divider"></div>
@@ -150,36 +131,49 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="GET" action="">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" name="search" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
+                                <button class="btn btn-primary" type="submit">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
                         </div>
                     </form>
+                    <?php
+                    // Pengecekan apakah form pencarian disubmit
+                    if (isset($_GET['search'])) {
+                        $searchTerm = mysqli_real_escape_string($koneksi, $_GET['search']);
+                        $query = "SELECT nama_ruang, status FROM ruang WHERE lantai = 7 AND nama_ruang LIKE '%$searchTerm%' ORDER BY nama_ruang DESC";
+                    } else {
+                        $query = "SELECT nama_ruang, status FROM ruang WHERE lantai = 7 ORDER BY nama_ruang DESC";
+                    }
+
+                    $result = mysqli_query($koneksi, $query);
+
+                    if ($result) {
+                        // ... (kode looping dan tampilan kartu ruangan tetap sama)
+
+                    } else {
+                        echo "Error dalam menjalankan query: " . mysqli_error($koneksi);
+                    }
+                    ?>
+
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
+                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
@@ -192,15 +186,13 @@
 
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
                                 <!-- Counter - Alerts -->
                                 <span class="badge badge-danger badge-counter">3+</span>
                             </a>
                             <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
                                     Alerts Center
                                 </h6>
@@ -243,15 +235,13 @@
 
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>
                                 <!-- Counter - Messages -->
                                 <span class="badge badge-danger badge-counter">7</span>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
                                     Message Center
                                 </h6>
@@ -290,8 +280,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div>
@@ -308,14 +297,12 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
@@ -329,7 +316,7 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="index.php" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -351,18 +338,16 @@
                                 <h1 class="h3 mb-0 text-gray-800">Daftar Ruang Lt.7</h1>
                             </div>
                             <div class="col-sm-6 mb-4 text-right d-flex justify-content-end">
-                                <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                        class="fas fa-download fa-sm text-white-50" style="padding-top: 7px"></i>
+                                <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50" style="padding-top: 7px"></i>
                                     Generate Report</a>
-                                <div class="clock-container shadow-sm"
-                                    style="margin-left: 20px;padding: 5px 20px; border-radius: 20px; background-color: rgb(255, 255, 255); cursor:default">
+                                <div class="clock-container shadow-sm" style="margin-left: 20px;padding: 5px 20px; border-radius: 20px; background-color: rgb(255, 255, 255); cursor:default">
                                     <div id="clock"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div>
-                        <img src="DENAH GEDUNG 7 NEW.png" class="card-img-top img-fluid" alt="">
+                        <img src="img/DENAH GEDUNG 7 NEW.png" class="card-img-top img-fluid" alt="">
                     </div>
                     <hr>
                     <!-- Content Row -->
@@ -376,7 +361,16 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Jumlah Ruang</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">16 Ruang</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <?php
+                                                $queryCountJumlahRuang = "SELECT COUNT(id_ruang) AS jmlRuang FROM ruang WHERE lantai=7";
+                                                $resultJumlahRuang = mysqli_query($koneksi, $queryCountJumlahRuang);
+                                                while ($count = mysqli_fetch_array($resultJumlahRuang)) {
+                                                    $jumlahRuang = $count["jmlRuang"];
+                                                    echo $jumlahRuang;
+                                                }
+                                                ?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -392,10 +386,16 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Ruang Available</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">9 Ruang</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <?php
+                                                $queryCountRuangAvail = "SELECT COUNT(id_ruang) AS jmlRuangAvail FROM ruang WHERE lantai=7 AND status='available'";
+                                                $resultJumlahRuangAvail = mysqli_query($koneksi, $queryCountRuangAvail);
+                                                while ($countRA = mysqli_fetch_array($resultJumlahRuangAvail)) {
+                                                    $jumlahRA = $countRA["jmlRuangAvail"];
+                                                    echo $jumlahRA;
+                                                }
+                                                ?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -409,23 +409,17 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Ruang
-                                                Terpakai
+                                                Unavailable</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <?php
+                                                $queryCountRuangUnavail = "SELECT COUNT(id_ruang) AS jmlRuangUnavail FROM ruang WHERE lantai=7 AND (status='unavailable' OR status='urgent')";
+                                                $resultJumlahRuangUnavail = mysqli_query($koneksi, $queryCountRuangUnavail);
+                                                while ($countRU = mysqli_fetch_array($resultJumlahRuangUnavail)) {
+                                                    $jumlahRU = $countRU["jmlRuangUnavail"];
+                                                    echo $jumlahRU;
+                                                }
+                                                ?>
                                             </div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">5</div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="progress progress-sm mr-2">
-                                                        <div class="progress-bar bg-danger" role="progressbar"
-                                                            style="width: 32%" aria-valuenow="50" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -440,169 +434,72 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
                                                 Pending Requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">2</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <?php
+                                                $queryCountRuangPending = "SELECT COUNT(id_ruang) AS jmlRuangPend FROM ruang WHERE lantai=7 AND status='pending'";
+                                                $resultJumlahRuangPending = mysqli_query($koneksi, $queryCountRuangPending);
+                                                while ($countP = mysqli_fetch_array($resultJumlahRuangPending)) {
+                                                    $jumlahP = $countP["jmlRuangPend"];
+                                                    echo $jumlahP;
+                                                }
+                                                ?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- DAFTAR RUANG -->
                     <!-- Color System -->
                     <div class="h4 font-weight-bold text-gray-800" style="margin: 10px 0px 20px 0px;">
                         Daftar Ruang
                     </div>
+                    <!-- NAMA-NAMA RUANG -->
                     <div class="row">
-                        <div class="col-auto mb-4">
-                            <div class="card bg-success text-white shadow-lg"
-                                style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked()">
-                                <div class="card-body">
-                                    LPR.1
-                                    <div class="text-white-50 small">Available</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto mb-4">
-                            <div class="card bg-success text-white shadow-lg"
-                                style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked()">
-                                <div class="card-body">
-                                    LPR.2
-                                    <div class="text-white-50 small">Available</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto mb-4">
-                            <div class="card bg-success text-white shadow"
-                                style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked()">
-                                <div class="card-body">
-                                    LPR.3
-                                    <div class="text-white-50 small">Available</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto mb-4">
-                            <div class="card bg-success text-white shadow"
-                                style="width: 120px; height: 120px; cursor:pointer;" onclick="cardClicked()">
-                                <div class="card-body">
-                                    LPR.4
-                                    <div class="text-white-50 small">Available</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto mb-4">
-                            <div class="card bg-danger text-white shadow"
-                                style="width: 120px; height: 120px; cursor:pointer;" onclick="cardClicked()">
-                                <div class="card-body">
-                                    LPR.5
-                                    <div class="text-white-50 small">Unvailable</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto mb-4">
-                            <div class="card bg-danger text-white shadow"
-                                style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked()">
-                                <div class="card-body">
-                                    LPR.6
-                                    <div class="text-white-50 small">Unvailable</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto mb-4">
-                            <div class="card bg-danger text-white shadow"
-                                style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked()">
-                                <div class="card-body">
-                                    LPR.7
-                                    <div class="text-white-50 small">Unvailable</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto mb-4">
-                            <div class="card bg-danger text-white shadow"
-                                style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked()">
-                                <div class="card-body">
-                                    LPR.8
-                                    <div class="text-white-50 small">Unavailable</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto mb-4">
-                            <div class="card bg-success text-white shadow"
-                                style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked()">
-                                <div class="card-body">
-                                    LKJ.1
-                                    <div class="text-white-50 small">Available</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto mb-4">
-                            <div class="card bg-success text-white shadow-lg"
-                                style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked()">
-                                <div class="card-body">
-                                    LKJ.2
-                                    <div class="text-white-50 small">Available</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto mb-4">
-                            <div class="card bg-success text-white shadow-lg"
-                                style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked()">
-                                <div class="card-body">
-                                    LKJ.3
-                                    <div class="text-white-50 small">Available</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto mb-4">
-                            <div class="card bg-danger text-white shadow"
-                                style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked()">
-                                <div class="card-body">
-                                    RT.8
-                                    <div class="text-white-50 small">Unavailable</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto mb-4">
-                            <div class="card bg-success text-white shadow"
-                                style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked()">
-                                <div class="card-body">
-                                    Lab Visual Komputer.1
-                                    <div class="text-white-50 small">Available</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto mb-4">
-                            <div class="card bg-success text-white shadow"
-                                style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked()">
-                                <div class="card-body">
-                                    Lab Visual Komputer.2
-                                    <div class="text-white-50 small">Available</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto mb-4">
-                            <div class="card bg-secondary text-white shadow"
-                                style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked()">
-                                <div class="card-body">
-                                    Lab Proyek.4
-                                    <div class="text-white-50 small">Pending</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto mb-4">
-                            <div class="card bg-secondary text-white shadow"
-                                style="width: 120px; height: 120px; cursor: pointer;" onclick="handleCardClicked(this)">
-                                <div class="card-body">
-                                    LKB.1
-                                    <div class="text-white-50 small">Pending</div>
-                                </div>
-                            </div>
-                            <div class="card-description mt-3" style="display: none;">
-                                <p>This is the expanded description for LKJ.3.</p>
-                            </div>
-                        </div>
+                        <?php
+                        $query = "SELECT nama_ruang,status FROM ruang WHERE lantai = 7 order by nama_ruang asc";
+                        $result = mysqli_query($koneksi, $query);
+                        if (mysqli_num_rows($result) > 0) {
+                            $no = 1;
+                            while ($row = mysqli_fetch_array($result)) {
+                                $no++;
+                                $status = $row["status"];
+
+                                // Atur warna berdasarkan status
+                                switch ($status) {
+                                    case 'available':
+                                        $bg_color = 'bg-success';
+                                        break;
+                                    case 'unavailable':
+                                        $bg_color = 'bg-danger';
+                                        break;
+                                    case 'pending':
+                                        $bg_color = 'bg-secondary';
+                                        break;
+                                    case 'urgent':
+                                        $bg_color = 'bg-gray-900';
+                                        break;
+                                    default:
+                                        $bg_color = 'bg-light';
+                                        break;
+                                }
+
+                                echo '<div class="col-auto mb-4">' .
+                                    '<div class="card ' . $bg_color . ' text-white shadow-lg" style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked()">' .
+                                    '<div class="card-body">' .
+                                    $row["nama_ruang"] .
+                                    '<div class="text-white-50 small">' . $row["status"] . '</div>' .
+                                    '</div>' .
+                                    '</div>' .
+                                    '</div>';
+                            }
+                        }
+                        mysqli_close($koneksi);
+                        ?>
+
                     </div>
+                    <!-- END DAFTAR RUANG -->
 
                 </div>
 
@@ -633,8 +530,7 @@
         </a>
 
         <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -646,7 +542,7 @@
                     <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.html">Logout</a>
+                        <a class="btn btn-primary" href="index.php">Logout</a>
                     </div>
                 </div>
             </div>
@@ -691,6 +587,7 @@
                     description.style.display = 'none';
                 }
             }
+
             function handleCardClicked(card) {
                 cardClicked();
                 enlargeCard(card);

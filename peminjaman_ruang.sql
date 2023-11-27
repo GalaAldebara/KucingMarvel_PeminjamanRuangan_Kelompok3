@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2023 at 03:47 AM
+-- Generation Time: Nov 26, 2023 at 02:58 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -47,8 +47,36 @@ CREATE TABLE `peminjaman` (
 CREATE TABLE `ruang` (
   `id_ruang` varchar(11) NOT NULL,
   `nama_ruang` varchar(50) NOT NULL,
-  `keterangan` varchar(500) NOT NULL
+  `keterangan` varchar(500) NOT NULL,
+  `status` enum('available','unavailable','pending','urgent') NOT NULL,
+  `lantai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `ruang`
+--
+
+INSERT INTO `ruang` (`id_ruang`, `nama_ruang`, `keterangan`, `status`, `lantai`) VALUES
+('lkb01', 'LKB.01', '', 'urgent', 7),
+('lkj01', 'LKJ.01', '', 'available', 7),
+('lkj02', 'LKJ.02', '', 'available', 7),
+('lkj03', 'LKJ.03', '', 'available', 7),
+('lp04', 'LP.04', '', 'available', 7),
+('lpr01', 'LPR.01', '', 'available', 7),
+('lpr02', 'LPR.02', '', 'available', 7),
+('lpr03', 'LPR.03', '', 'available', 7),
+('lpr04', 'LPR.04', '', 'available', 7),
+('lpr05', 'LPR.05', '', 'available', 7),
+('lpr06', 'LPR.06', '', 'unavailable', 7),
+('lpr07', 'LPR.07', '', 'unavailable', 7),
+('lpr08', 'LPR.08', '', 'unavailable', 7),
+('lvk01', 'LVK.01', '', 'available', 7),
+('lvk02', 'LVK.02', '', 'available', 7),
+('rat01', 'RAT.01', '', 'urgent', 8),
+('rt08', 'RT.08', '', 'pending', 7),
+('rt09', 'RT.09', '', 'available', 8),
+('rt10', 'RT.10', '', 'available', 8),
+('rt11', 'RT.11', '', 'pending', 8);
 
 -- --------------------------------------------------------
 
@@ -74,8 +102,8 @@ CREATE TABLE `user` (
 --
 ALTER TABLE `peminjaman`
   ADD PRIMARY KEY (`id_peminjaman`),
-  ADD KEY `nim/nip` (`nim/nip`,`id_ruang`),
-  ADD KEY `id_ruang` (`id_ruang`);
+  ADD KEY `nim/nip` (`nim/nip`),
+  ADD KEY `FK_idRuang` (`id_ruang`);
 
 --
 -- Indexes for table `ruang`
@@ -107,7 +135,7 @@ ALTER TABLE `peminjaman`
 -- Constraints for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
-  ADD CONSTRAINT `peminjaman_ibfk_1` FOREIGN KEY (`id_ruang`) REFERENCES `ruang` (`id_ruang`),
+  ADD CONSTRAINT `FK_idRuang` FOREIGN KEY (`id_ruang`) REFERENCES `ruang` (`id_ruang`),
   ADD CONSTRAINT `peminjaman_ibfk_2` FOREIGN KEY (`nim/nip`) REFERENCES `user` (`nim/nip`);
 COMMIT;
 

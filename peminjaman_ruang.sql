@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2023 at 02:58 PM
+-- Generation Time: Nov 27, 2023 at 11:50 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -57,7 +57,7 @@ CREATE TABLE `ruang` (
 --
 
 INSERT INTO `ruang` (`id_ruang`, `nama_ruang`, `keterangan`, `status`, `lantai`) VALUES
-('lkb01', 'LKB.01', '', 'urgent', 7),
+('lkb01', 'LKB.01', '', 'available', 7),
 ('lkj01', 'LKJ.01', '', 'available', 7),
 ('lkj02', 'LKJ.02', '', 'available', 7),
 ('lkj03', 'LKJ.03', '', 'available', 7),
@@ -92,6 +92,32 @@ CREATE TABLE `user` (
   `no_telp` varchar(15) NOT NULL,
   `password` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`nim/nip`, `nama`, `jurusan`, `level`, `no_telp`, `password`) VALUES
+('0001', 'admin1', 'Tekhnologi Informasi', 'admin', '123456789', 1),
+('0002', 'admin2', 'Tekhnologi Informasi', 'admin', '123456789', 2),
+('0003', 'admin3', 'Tekhnologi Informasi', 'admin', '123456789', 3),
+('1001', 'Dodit Suprianto SKom. MT.', 'Tekhnologi Informasi', 'dosen', '123456789', 1001),
+('1002', 'Dika Rizky Yunianto, S.Kom, M.Kom', 'Tekhnologi Informasi', 'dosen', '123456789', 1002),
+('1003', 'Endah Septa Sintiya. SPd., MKom.', 'Tekhnologi Informasi', 'dosen', '123456789', 1003),
+('1004', 'Muhammad Unggul Pamenang, S.St., M.T.', 'Tekhnologi Informasi', 'dosen', '123456789', 1004),
+('1005', 'Vipkas Al Hadid Firdaus, ST,. MT', 'Tekhnologi Informasi', 'dosen', '123456789', 1005),
+('1006', 'Candra Bella Vista, S.Kom., MT.', 'Tekhnologi Informasi', 'dosen', '123456789', 1006),
+('1007', 'Ahmadi Yuli Ananta, ST., M.M.\r\n', 'Tekhnologi Informasi', 'dosen', '123456789', 1007),
+('2241720018', 'Wahyudi', 'Tekhnologi Informasi', 'mahasiswa', '123456789', 2147483647),
+('2241720057', 'Rizqi Reza Danuarta', 'Tekhnologi Informasi', 'mahasiswa', '123456789', 2147483647),
+('2241720099 ', 'Muhammmad Iqbal Makmur Al-Muniri', 'Tekhnologi Informasi', 'mahasiswa', '123456789', 224172099),
+('2241720113', 'Aleron Tsaqif Rakha Rajendra', 'Tekhnologi Informasi', 'mahasiswa', '123456789', 2147483647),
+('2241720142', 'Ridho Fauzian Pratama', 'Tekhnologi Informasi', 'mahasiswa', '123456789', 2147483647),
+('2241720159', 'Achmad Mufid', 'Tekhnologi Informasi', 'mahasiswa', '123456789', 2147483647),
+('2241720161', 'Rhanilham Fadlillatul Ramadhan', 'Tekhnologi Informasi', 'mahasiswa', '123456789', 2147483647),
+('2241720188', 'Bimantara Dwi Cahyo', 'Tekhnologi Informasi', 'mahasiswa', '123456789', 2147483647),
+('2241720227', 'Muhammad Irsyad Dany', 'Tekhnologi Informasi', 'mahasiswa', '123456789', 2147483647),
+('2241720233', 'Irsyad Danisaputra', 'Tekhnologi Informasi', 'mahasiswa', '123456789', 2147483647);
 
 --
 -- Indexes for dumped tables

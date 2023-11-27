@@ -141,24 +141,7 @@
                             </div>
                         </div>
                     </form>
-                    <?php
-                    // Pengecekan apakah form pencarian disubmit
-                    if (isset($_GET['search'])) {
-                        $searchTerm = mysqli_real_escape_string($koneksi, $_GET['search']);
-                        $query = "SELECT nama_ruang, status FROM ruang WHERE lantai = 7 AND nama_ruang LIKE '%$searchTerm%' ORDER BY nama_ruang DESC";
-                    } else {
-                        $query = "SELECT nama_ruang, status FROM ruang WHERE lantai = 7 ORDER BY nama_ruang DESC";
-                    }
 
-                    $result = mysqli_query($koneksi, $query);
-
-                    if ($result) {
-                        // ... (kode looping dan tampilan kartu ruangan tetap sama)
-
-                    } else {
-                        echo "Error dalam menjalankan query: " . mysqli_error($koneksi);
-                    }
-                    ?>
 
 
                     <!-- Topbar Navbar -->
@@ -181,6 +164,7 @@
                                         </div>
                                     </div>
                                 </form>
+
                             </div>
                         </li>
 
@@ -330,7 +314,6 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
                     <!-- Page Heading -->
                     <div>
                         <div class="row">
@@ -345,6 +328,12 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <!-- Search Logic -->
+                    <div class="row">
+                        <?php
+                        include('php/search.php');
+                        ?>
                     </div>
                     <div>
                         <img src="img/DENAH GEDUNG 7 NEW.png" class="card-img-top img-fluid" alt="">
@@ -509,13 +498,9 @@
                 <!-- End of Main Content -->
 
                 <!-- Footer -->
-                <footer class="sticky-footer bg-white">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2021</span>
-                        </div>
-                    </div>
-                </footer>
+                <?php
+                include('php/footer.php');
+                ?>
                 <!-- End of Footer -->
 
             </div>
@@ -567,30 +552,9 @@
         <script src="js/demo/chart-area-demo.js"></script>
         <script src="js/demo/chart-pie-demo.js"></script>
         <script>
-            // Fungsi yang dipanggil saat card ditekan
             function cardClicked() {
-                alert('Card Ditekan!'); // Gantilah dengan tindakan yang diinginkan
+                alert('Card Ditekan!');
 
-            }
-            // Fungsi yang dipanggil saat card ditekan
-            function enlargeCard(card) {
-                // Toggle the 'active' class on the clicked card
-                card.classList.toggle('active');
-
-                // Find the description element next to the clicked card
-                var description = card.nextElementSibling;
-
-                // Toggle the display property of the description element
-                if (description.style.display === 'none' || description.style.display === '') {
-                    description.style.display = 'block';
-                } else {
-                    description.style.display = 'none';
-                }
-            }
-
-            function handleCardClicked(card) {
-                cardClicked();
-                enlargeCard(card);
             }
         </script>
 

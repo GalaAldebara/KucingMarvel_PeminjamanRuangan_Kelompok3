@@ -131,11 +131,11 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="GET" action="">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" name="search" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
+                                <button class="btn btn-primary" type="submit">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -327,7 +327,12 @@
                             </div>
                         </div>
                     </div>
-
+                    <!-- Search Logic -->
+                    <div class="row">
+                        <?php
+                        include('php/search.php');
+                        ?>
+                    </div>
                     <div>
                         <img src="img/DENAH GEDUNG 8 NEW.png" class="card-img-top img-fluid" alt="">
                     </div>
@@ -583,13 +588,9 @@
                 <!-- End of Main Content -->
 
                 <!-- Footer -->
-                <footer class="sticky-footer bg-white">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2021</span>
-                        </div>
-                    </div>
-                </footer>
+                <?php
+                include('php/footer.php');
+                ?>
                 <!-- End of Footer -->
 
             </div>
@@ -641,29 +642,9 @@
         <script src="js/demo/chart-area-demo.js"></script>
         <script src="js/demo/chart-pie-demo.js"></script>
         <script>
-            function cardClicked(card) {
-                // Dapatkan warna latar belakang dari elemen card
-                var backgroundColor = window.getComputedStyle(card).getPropertyValue('background-color');
+            function cardClicked() {
+                alert('Card Ditekan!');
 
-                // Tentukan pesan berdasarkan warna latar belakang
-                var message = getMessageFromColor(backgroundColor);
-
-                // Tampilkan alert dengan pesan yang sesuai
-                alert(message);
-            }
-
-            function getMessageFromColor(color) {
-                // Atur peta warna dan pesan yang sesuai
-                var colorMap = {
-                    'rgb(28, 200, 138)': 'Available', // Hijau
-                    'rgb(58, 59, 69)': 'Unavailable' // Abu-abu
-                    // Tambahkan aturan untuk warna lain jika diperlukan
-                };
-
-                // Dapatkan pesan berdasarkan warna
-                var message = colorMap[color] || 'Unknown';
-
-                return message;
             }
         </script>
         <script>

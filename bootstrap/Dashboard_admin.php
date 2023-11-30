@@ -430,53 +430,53 @@
                     </div>
                     <div class="row">
                         <?php
-                        // $query = "SELECT nama_ruang,status FROM ruang WHERE lantai = 8 order by nama_ruang asc";
-                        // $result = mysqli_query($koneksi, $query);
-                        // if (mysqli_num_rows($result) > 0) {
-                        //     $no = 1;
-                        //     while ($row = mysqli_fetch_array($result)) {
-                        //         $no++;
-                        //         $status = $row["status"];
+                        $query = "SELECT nama_ruang,status FROM ruang WHERE lantai = 8 order by nama_ruang asc";
+                        $result = mysqli_query($koneksi, $query);
+                        if (mysqli_num_rows($result) > 0) {
+                            $no = 1;
+                            while ($row = mysqli_fetch_array($result)) {
+                                $no++;
+                                $status = $row["status"];
 
-                        //         // Atur warna berdasarkan status
-                        //         switch ($status) {
-                        //             case 'available':
-                        //                 $bg_color = 'bg-success';
-                        //                 break;
-                        //             case 'unavailable':
-                        //                 $bg_color = 'bg-danger';
-                        //                 break;
-                        //             case 'pending':
-                        //                 $bg_color = 'bg-secondary';
-                        //                 break;
-                        //             case 'urgent':
-                        //                 $bg_color = 'bg-gray-900';
-                        //                 break;
-                        //             default:
-                        //                 $bg_color = 'bg-light';
-                        //                 break;
-                        //         }
+                                // Atur warna berdasarkan status
+                                switch ($status) {
+                                    case 'available':
+                                        $bg_color = 'bg-success';
+                                        break;
+                                    case 'unavailable':
+                                        $bg_color = 'bg-danger';
+                                        break;
+                                    case 'pending':
+                                        $bg_color = 'bg-secondary';
+                                        break;
+                                    case 'urgent':
+                                        $bg_color = 'bg-gray-900';
+                                        break;
+                                    default:
+                                        $bg_color = 'bg-light';
+                                        break;
+                                }
 
-                        //         echo '<div class="col-auto mb-4">' .
-                        //             '<div class="card ' . $bg_color . ' text-white shadow-lg" style="width: 120px; height: 120px; cursor: pointer;" onclick="myFunction()">' .
-                        //             '<div class="card-body">' .
-                        //             $row["nama_ruang"] .
-                        //             '<div class="text-white-50 small">' . $row["status"] . '</div>' .
-                        //             '</div>' .
-                        //             '</div>' .
-                        //             '</div>';
-                        //     }
-                        // }
-                        // mysqli_close($koneksi);
+                                echo '<div class="col-auto mb-4">' .
+                                    '<div class="card ' . $bg_color . ' text-white shadow-lg" style="width: 120px; height: 120px; cursor: pointer;" onclick="showForm(\''.$row["nama_ruang"] . '\')">' .
+                                    '<div class="card-body">' .
+                                    $row["nama_ruang"] .
+                                    '<div class="text-white-50 small">' . $row["status"] . '</div>' .
+                                    '</div>' .
+                                    '</div>' .
+                                    '</div>';
+                            }
+                        }
+                        mysqli_close($koneksi);
                         ?>
-                        <div class="col-auto mb-4">
+                        <!-- <div class="col-auto mb-4">
                             <div class="card bg-success text-white shadow-lg" style="width: 120px; height: 120px; cursor: pointer;" onclick="showForm()">
                                 <div class="card-body">
                                     LAI.2
                                     <div class="text-white-50 small">Available</div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="form-container" id="myForm" style="display: none; z-index: 1000; position: absolute; top: 50%; transform: translate(-50%, -50%);">
                             <div class="card bg-light" style="width: 300px; cursor: pointer; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                             <img src="img/landscape.png" alt="Form Image" style="width: 100%; height: auto; object-fit: cover; border-bottom: 1px solid #ddd;">
@@ -493,34 +493,36 @@
                                 </div>
                             </div>
                         </div>
+
                         <script>
-                            function showForm() {
+                            function showForm(namaRuang) {
                                 var form = document.getElementById('myForm');
                                 form.style.display = 'block';
                                 form.style.zIndex = '1000';
+                                document.getelementById('namaRuang').value = namaRuang;
                             }
 
                             function closeForm() {
                                 var form = document.getElementById('myForm');
-                                form.style.display = 'none';
+                                form.style.animation = 'fadeIn 0.5s ease';
+                                setTimeout(() => {
+                                    form.style.display = 'none';
+                                    form.style.animation = 'fadeIn 0.5s ease';
+                                }, 500);
                             }
 
                             function submitForm() {
                             var nama = document.getElementById('nama').value;
                             var nim = document.getElementById('nim').value;
+                            var namaRuang = document.getElementById('namaRUang').value;
 
-                            // Lakukan sesuatu dengan data yang telah diambil, misalnya simpan ke database
-                            // ...
-
-                            // Setelah data diambil atau diolah, sembunyikan formulir
                             var form = document.getElementById('myForm');
                             form.style.display = 'none';
 
-                            // Tampilkan pesan atau lakukan tindakan lain yang diinginkan
                             alert('Formulir telah dikirim: Nama - ' + nama + ', NIM - ' + nim);
                             }
                         </script>
-                        <div class="col-auto mb-4">
+                        <!-- <div class="col-auto mb-4">
                             <div class="card bg-success text-white shadow-lg" style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked(this)">
                                 <div class="card-body">
                                     RT.09
@@ -609,7 +611,7 @@
                                 </div>
                             </div>
                         </div> 
-                    </div>
+                    </div> -->
 
                 </div>
 

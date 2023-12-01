@@ -443,7 +443,6 @@
                     <div class="h4 font-weight-bold text-gray-800" style="margin: 10px 0px 20px 0px;">
                         Daftar Ruang
                     </div>
-                    <!-- NAMA-NAMA RUANG -->
                     <div class="row">
                         <?php
                         $query = "SELECT nama_ruang,status FROM ruang WHERE lantai = 7 order by nama_ruang asc";
@@ -474,7 +473,7 @@
                                 }
 
                                 echo '<div class="col-auto mb-4">' .
-                                    '<div class="card ' . $bg_color . ' text-white shadow-lg" style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked()">' .
+                                    '<div class="card ' . $bg_color . ' text-white shadow-lg" style="width: 120px; height: 120px; cursor: pointer;" onclick="showForm(\''.$row["nama_ruang"] . '\')">' .
                                     '<div class="card-body">' .
                                     $row["nama_ruang"] .
                                     '<div class="text-white-50 small">' . $row["status"] . '</div>' .
@@ -485,8 +484,51 @@
                         }
                         mysqli_close($koneksi);
                         ?>
+                        <div class="form-container" id="myForm" style="display: none; z-index: 1000; position: absolute; top: 50%; transform: translate(-50%, -50%);">
+                            <div class="card bg-light" style="width: 300px; cursor: pointer; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                            <img src="img/landscape.png" alt="Form Image" style="width: 100%; height: auto; object-fit: cover; border-bottom: 1px solid #ddd;">
 
-                    </div>
+                                <div class="card-body">
+                                    <label for="nama" class="form-label">Nama:</label>
+                                    <input type="text" id="nama" name="nama" class="form-control" required>
+
+                                    <label for="nim" class="form-label">NIM:</label>
+                                    <input type="text" id="nim" name="nim" class="form-control" required>
+
+                                     <button type="button" class="btn btn-success" onclick="submitForm()">Kirim</button>
+                                     <button type="button" class="btn btn-secondary" onclick="closeForm()">Batal</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script>
+                            function showForm(namaRuang) {
+                                var form = document.getElementById('myForm');
+                                form.style.display = 'block';
+                                form.style.zIndex = '1000';
+                                document.getelementById('namaRuang').value = namaRuang;
+                            }
+
+                            function closeForm() {
+                                var form = document.getElementById('myForm');
+                                form.style.animation = 'fadeIn 0.5s ease';
+                                setTimeout(() => {
+                                    form.style.display = 'none';
+                                    form.style.animation = 'fadeIn 0.5s ease';
+                                }, 500);
+                            }
+
+                            function submitForm() {
+                            var nama = document.getElementById('nama').value;
+                            var nim = document.getElementById('nim').value;
+                            var namaRuang = document.getElementById('namaRUang').value;
+
+                            var form = document.getElementById('myForm');
+                            form.style.display = 'none';
+
+                            alert('Formulir telah dikirim: Nama - ' + nama + ', NIM - ' + nim);
+                            }
+                        </script>
                     <!-- END DAFTAR RUANG -->
 
                 </div>

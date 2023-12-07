@@ -2,6 +2,7 @@
 session_start();
 include 'php/koneksi.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,16 +33,16 @@ include 'php/koneksi.php';
 </head>
 
 <body id="page-top">
+
     <!-- Page Wrapper -->
     <div id="wrapper">
-
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion " id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="Dashboard_2.php">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="Dashboard.php">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-beam"></i>
+                    <i class="fas fa-cat"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">Peminjaman Ruang</div>
             </a>
@@ -51,7 +52,7 @@ include 'php/koneksi.php';
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="Dashboard_2.php">
+                <a class="nav-link" href="Dashboard.php">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -64,8 +65,8 @@ include 'php/koneksi.php';
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Pilih Lantai:</h6>
-                        <a href="Dashboard.php" class="collapse-item">Lantai 7</a>
-                        <a href="#" class="collapse-item">Lantai 8</a>
+                        <a href="#" class="collapse-item">Lantai 7</a>
+                        <a href="Dashboard_2.php" class="collapse-item">Lantai 8</a>
                     </div>
                 </div>
             </li>
@@ -79,7 +80,7 @@ include 'php/koneksi.php';
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
+                        <a class="collapse-item" href="index.php">Login</a>
                         <a class="collapse-item" href="register.html">Register</a>
                         <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                         <div class="collapse-divider"></div>
@@ -89,6 +90,17 @@ include 'php/koneksi.php';
                 </div>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdmin" aria-expanded="true" aria-controls="collapseAdmin">
+                    <i class="fas fa-fw fa-door-closed"></i>
+                    <span>Admin</span>
+                </a>
+                <div id="collapseAdmin" class="collapse" aria-labelledby="headingAdmin" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a href="Dashboard_admin.php" class="collapse-item">Admin</a>
+                    </div>
+                </div>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -116,19 +128,6 @@ include 'php/koneksi.php';
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-
-                    <!-- Topbar Search -->
-                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="GET" action="">
-                        <div class="input-group">
-                            <input type="text" name="search" class="form-control bg-light border-0 small" placeholder="Cari ruang..." aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
@@ -149,6 +148,7 @@ include 'php/koneksi.php';
                                         </div>
                                     </div>
                                 </form>
+
                             </div>
                         </li>
 
@@ -284,7 +284,7 @@ include 'php/koneksi.php';
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="logout.php" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -298,15 +298,14 @@ include 'php/koneksi.php';
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
                     <!-- Page Heading -->
                     <div>
                         <div class="row">
                             <div class="col-sm-6 mb-4">
-                                <h1 class="h3 mb-0 text-gray-800">Daftar Ruang Lt.8</h1>
+                                <h1 class="h3 mb-0 text-gray-800">Formulir Peminjaman</h1>
                             </div>
                             <div class="col-sm-6 mb-4 text-right d-flex justify-content-end">
-                                <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50" style="padding-top: 7px;"></i>
+                                <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50" style="padding-top: 7px"></i>
                                     Generate Report</a>
                                 <div class="clock-container shadow-sm" style="margin-left: 20px;padding: 5px 20px; border-radius: 20px; background-color: rgb(255, 255, 255); cursor:default">
                                     <div id="clock"></div>
@@ -314,266 +313,55 @@ include 'php/koneksi.php';
                             </div>
                         </div>
                     </div>
-                    <!-- Search Logic -->
-                    <div class="row">
-                        <?php
-                        include('php/search.php');
-                        ?>
-                    </div>
-                    <div>
-                        <img src="img/DENAH GEDUNG 8 NEW.png" class="card-img-top img-fluid" alt="">
-                    </div>
-                    <hr>
-                    <!-- Content Row -->
-                    <div class="row">
+                    <!-- Begin Page Content -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12 mb-1">
+      <!-- Card -->
+      <div class="card">
+        <div class="card-body">
+          <!-- Form -->
+          <form action="php/simpan_peminjaman.php" method="post">
+            <div class="mb-3">
+              <label for="namaPeminjam" class="form-label">Nama Peminjam</label>
+              <input type="text" class="form-control" id="namaPeminjam" name="namaPeminjam" required>
+            </div>
+            <div class="mb-3">
+          <label for="ruangan" class="form-label">Ruangan</label>
+          <input type="text" class="form-control" id="ruangan" name="ruangan" required>
+        </div>
 
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4" style="cursor: default;">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Jumlah Ruang</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <?php
-                                                $queryCountJumlahRuang = "SELECT COUNT(id_ruang) AS jmlRuang FROM ruang WHERE lantai=8";
-                                                $resultJumlahRuang = mysqli_query($koneksi, $queryCountJumlahRuang);
-                                                while ($count = mysqli_fetch_array($resultJumlahRuang)) {
-                                                    $jumlahRuang = $count["jmlRuang"];
-                                                    echo $jumlahRuang;
-                                                }
-                                                ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4" style="cursor: default;">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Ruang Available</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <?php
-                                                $queryCountRuangAvail = "SELECT COUNT(id_ruang) AS jmlRuangAvail FROM ruang WHERE lantai=8 AND status='available'";
-                                                $resultJumlahRuangAvail = mysqli_query($koneksi, $queryCountRuangAvail);
-                                                while ($countRA = mysqli_fetch_array($resultJumlahRuangAvail)) {
-                                                    $jumlahRA = $countRA["jmlRuangAvail"];
-                                                    echo $jumlahRA;
-                                                }
-                                                ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="mb-3">
+          <label for="kegiatan" class="form-label">Kegiatan</label>
+          <input type="text" class="form-control" id="kegiatan" name="kegiatan" required>
+        </div>
 
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4" style="cursor: default;">
-                            <div class="card border-left-danger shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Ruang
-                                                Unavailable</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <?php
-                                                $queryCountRuangUnavail = "SELECT COUNT(id_ruang) AS jmlRuangUnavail FROM ruang WHERE lantai=8 AND (status='unavailable'OR status='urgent')";
-                                                $resultJumlahRuangUnavail = mysqli_query($koneksi, $queryCountRuangUnavail);
-                                                while ($countRU = mysqli_fetch_array($resultJumlahRuangUnavail)) {
-                                                    $jumlahRU = $countRU["jmlRuangUnavail"];
-                                                    echo $jumlahRU;
-                                                }
-                                                ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="mb-3">
+          <label for="tglPeminjaman" class="form-label">Tanggal Peminjaman</label>
+          <input type="date" class="form-control" id="tglPeminjaman" name="tglPeminjaman" required>
+        </div>
 
-                        <!-- Pending Requests Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4" style="cursor: default;">
-                            <div class="card border-left-secondary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
-                                                Pending Requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <?php
-                                                $queryCountRuangPending = "SELECT COUNT(id_ruang) AS jmlRuangPend FROM ruang WHERE lantai=8 AND status='pending'";
-                                                $resultJumlahRuangPending = mysqli_query($koneksi, $queryCountRuangPending);
-                                                while ($countP = mysqli_fetch_array($resultJumlahRuangPending)) {
-                                                    $jumlahP = $countP["jmlRuangPend"];
-                                                    echo $jumlahP;
-                                                }
-                                                ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <div class="mb-3">
+          <label for="waktuMulai" class="form-label">Waktu Mulai</label>
+          <input type="datetime-local" class="form-control" id="waktuMulai" name="waktuMulai" required>
+        </div>
 
-                    <!-- Color System -->
-                    <div class="h4 font-weight-bold text-gray-800" style="margin: 10px 0px 20px 0px;">
-                        Daftar Ruang
-                    </div>
-                    <div class="row">
-                        <?php
-                        $query = "SELECT nama_ruang,status FROM ruang WHERE lantai = 8 order by nama_ruang asc";
-                        $result = mysqli_query($koneksi, $query);
-                        if (mysqli_num_rows($result) > 0) {
-                            $no = 1;
-                            while ($row = mysqli_fetch_array($result)) {
-                                $no++;
-                                $status = $row["status"];
-
-                                // Atur warna berdasarkan status
-                                switch ($status) {
-                                    case 'available':
-                                        $bg_color = 'bg-success';
-                                        break;
-                                    case 'unavailable':
-                                        $bg_color = 'bg-danger';
-                                        break;
-                                    case 'pending':
-                                        $bg_color = 'bg-secondary';
-                                        break;
-                                    case 'urgent':
-                                        $bg_color = 'bg-gray-900';
-                                        break;
-                                    default:
-                                        $bg_color = 'bg-light';
-                                        break;
-                                }
-
-                                echo '<div class="col-auto mb-4">' .
-                                    '<div class="card ' . $bg_color . ' text-white shadow-lg" style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked()">' .
-                                    '<div class="card-body">' .
-                                    $row["nama_ruang"] .
-                                    '<div class="text-white-50 small">' . $row["status"] . '</div>' .
-                                    '</div>' .
-                                    '</div>' .
-                                    '</div>';
-                            }
-                        }
-                        mysqli_close($koneksi);
-                        ?>
-                        <!-- <div class="col-auto mb-4">
-                            <div class="card bg-success text-white shadow-lg" style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked(this)">
-                                <div class="card-body">
-                                    LAI.2
-                                    <div class="text-white-50 small">Available</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto mb-4">
-                            <div class="card bg-success text-white shadow-lg" style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked(this)">
-                                <div class="card-body">
-                                    RT.09
-                                    <div class="text-white-50 small">Available</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto mb-4">
-                            <div class="card bg-success text-white shadow" style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked(this)">
-                                <div class="card-body">
-                                    RT.10
-                                    <div class="text-white-50 small">Available</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto mb-4">
-                            <div class="card bg-success text-white shadow" style="width: 120px; height: 120px; cursor:pointer;" onclick="cardClicked(this)">
-                                <div class="card-body">
-                                    RUANG 1
-                                    <div class="text-white-50 small">Available</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto mb-4">
-                            <div class="card bg-success text-white shadow" style="width: 120px; height: 120px; cursor:pointer;" onclick="cardClicked(this)">
-                                <div class="card-body">
-                                    RUANG 2
-                                    <div class="text-white-50 small">Available</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto mb-4">
-                            <div class="card bg-success text-white shadow" style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked(this)">
-                                <div class="card-body">
-                                    RUANG 3
-                                    <div class="text-white-50 small">Available</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto mb-4">
-                            <div class="card bg-success text-white shadow" style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked(this)">
-                                <div class="card-body">
-                                    RUANG 4
-                                    <div class="text-white-50 small">Available</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto mb-4">
-                            <div class="card bg-success text-white shadow" style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked(this)">
-                                <div class="card-body">
-                                    RUANG 5
-                                    <div class="text-white-50 small">Available</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto mb-4">
-                            <div class="card bg-success text-white shadow" style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked(this)">
-                                <div class="card-body">
-                                    RUANG 6
-                                    <div class="text-white-50 small">Available</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto mb-4">
-                            <div class="card bg-success text-white shadow-lg" style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked(this)">
-                                <div class="card-body">
-                                    RUANG 7
-                                    <div class="text-white-50 small">Available</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto mb-4">
-                            <div class="card bg-success text-white shadow-lg" style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked(this)">
-                                <div class="card-body">
-                                    RUANG 8
-                                    <div class="text-white-50 small">Available</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto mb-4">
-                            <div class="card bg-gray-900 text-white shadow" style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked(this)">
-                                <div class="card-body">
-                                    RAT.01
-                                    <div class="text-white-50" style="font-size: 10px;">(AUDIOTORIUM)</div>
-                                    <div class="text-white-50 small">Unavailable</div>
-                                </div>
-                            </div>
-                        </div> -->
-                    </div>
-
-                </div>
-
-                <div class="col-lg-6 mb-4">
-
-                </div>
+        <div class="mb-3">
+          <label for="waktuSelesai" class="form-label">Waktu Selesai</label>
+          <input type="datetime-local" class="form-control" id="waktuSelesai" name="waktuSelesai" required>
+        </div>
+            <button type="submit" class="btn btn-primary">Kirim</button>
+          </form>
+          <!-- End Form -->
+        </div>
+      </div>
+      <!-- End Card -->
+    </div>
+  </div>
+</div>
+ <hr>
+<!-- End of Main Content -->
                 <!-- End of Main Content -->
-
                 <!-- Footer -->
                 <?php
                 include('php/footer.php');
@@ -604,7 +392,7 @@ include 'php/koneksi.php';
                     <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="logout.php">Logout</a>
+                        <a class="btn btn-primary" href="index.php">Logout</a>
                     </div>
                 </div>
             </div>
@@ -634,6 +422,8 @@ include 'php/koneksi.php';
 
             }
         </script>
+
+        <!-- Script Jam RealTime -->
         <script>
             function updateClock() {
                 var now = new Date();
@@ -659,10 +449,6 @@ include 'php/koneksi.php';
             // Memanggil fungsi updateClock untuk pertama kali saat halaman dimuat
             updateClock();
         </script>
-
-        <!-- Warna -->
-        <!-- rgb(28, 200, 138) bg-success -->
-        <!-- rgb(58, 59, 69) bg-Gray-900 -->
 </body>
 
 </html>

@@ -1,3 +1,7 @@
+<?php
+session_start();
+include 'php/koneksi.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,11 +32,6 @@
 </head>
 
 <body id="page-top">
-    <!-- PHP KONEKSI -->
-    <?php
-    include('php/koneksi.php');
-    ?>
-    <!-- END PHP KONEKSI -->
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -80,7 +79,7 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="index.php">Login</a>
+                        <a class="collapse-item" href="login.php">Login</a>
                         <a class="collapse-item" href="register.html">Register</a>
                         <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                         <div class="collapse-divider"></div>
@@ -299,7 +298,7 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="index.php" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="login.php" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -472,7 +471,7 @@
                                         break;
                                 }
 
-                                echo '<div class="col-auto mb-4">' .
+                                echo '<div class="col-auto mb-4" href = "peminjaman.php">' .
                                     '<div class="card ' . $bg_color . ' text-white shadow-lg" style="width: 120px; height: 120px; cursor: pointer;" onclick="showForm(\''.$row["nama_ruang"] . '\')">' .
                                     '<div class="card-body">' .
                                     $row["nama_ruang"] .
@@ -568,7 +567,7 @@
                     <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="index.php">Logout</a>
+                        <a class="btn btn-primary" href="logout.php">Logout</a>
                     </div>
                 </div>
             </div>

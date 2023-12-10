@@ -13,7 +13,7 @@ include 'php/koneksi.php';
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Peminjaman Ruang</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -36,13 +36,27 @@ include 'php/koneksi.php';
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion " id="accordionSidebar">
+        <style>
+                .clock-container {
+                    font-size: 18px;
+                    margin-top: auto;
+                }
 
+                .sidebar-brand-icon img {
+                    width: 60px;
+                    height: auto;
+                    object-fit: contain;
+                }
+
+                .bg-gradient-primary {
+                    background-color: #FFB534;
+                }
+                </style>
+        <ul class="navbar-nav sidebar sidebar-dark accordion " id="accordionSidebar" style="background-color: #2c4182">
+                
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="Dashboard.php">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-cat"></i>
-                </div>
+                <img src="img/logo.png" class="img-fluid mx-auto d-block" alt="" srcset="" style="object-fit: contain; width: 250%; height: 250%;">
                 <div class="sidebar-brand-text mx-3">Peminjaman Ruang</div>
             </a>
 
@@ -80,23 +94,11 @@ include 'php/koneksi.php';
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
                         <a class="collapse-item" href="login.php">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
+                        <!-- <a class="collapse-item" href="register.html">Register</a>
                         <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdmin" aria-expanded="true" aria-controls="collapseAdmin">
-                    <i class="fas fa-fw fa-door-closed"></i>
-                    <span>Admin</span>
-                </a>
-                <div id="collapseAdmin" class="collapse" aria-labelledby="headingAdmin" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a href="Dashboard_admin.php" class="collapse-item">Admin</a>
+                        <div class="collapse-divider"></div> -->
+                        <!-- <h6 class="collapse-header">Other Pages:</h6>
+                        <a class="collapse-item" href="404.html">404 Page</a> -->
                     </div>
                 </div>
             </li>
@@ -121,7 +123,7 @@ include 'php/koneksi.php';
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <nav class="navbar navbar-expand  topbar mb-4 static-top shadow" style="background-color: #FFB534">
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -130,15 +132,37 @@ include 'php/koneksi.php';
 
                     <!-- Topbar Search -->
                     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="GET" action="">
-                        <div class="input-group">
+                        <style>
+                            .navbar-search {
+                                max-width: 300px;
+                                margin-left: 10px;
+                            }
+
+                            .btn-search {
+                                background-color: #FFB534;
+                                margin-left: 10px;
+                            }
+                            </style>
+                        <div class="input-group ">
                             <input type="text" name="search" class="form-control bg-light border-0 small" placeholder="Cari ruang..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit">
+                                <button class="btn btn-primary" type="submit" style="background-color: #2c4182">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
                         </div>
                     </form>
+                    <!-- Topbar Search Day -->
+                    <!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="GET" action="">
+                        <div class="input-group">
+                            <input type="text" name="search" class="form-control bg-light border-0 small" placeholder="Cari ruang..." aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit" style="background-color: #2c4182">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form> -->
 
 
 
@@ -166,13 +190,6 @@ include 'php/koneksi.php';
                             </div>
                         </li>
 
-                        <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
-                            </a>
                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
@@ -215,13 +232,6 @@ include 'php/koneksi.php';
                             </div>
                         </li>
 
-                        <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
-                            </a>
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
@@ -280,7 +290,7 @@ include 'php/koneksi.php';
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $_SESSION['nama']?></span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -319,8 +329,6 @@ include 'php/koneksi.php';
                                 <h1 class="h3 mb-0 text-gray-800">Daftar Ruang Lt.7</h1>
                             </div>
                             <div class="col-sm-6 mb-4 text-right d-flex justify-content-end">
-                                <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50" style="padding-top: 7px"></i>
-                                    Generate Report</a>
                                 <div class="clock-container shadow-sm" style="margin-left: 20px;padding: 5px 20px; border-radius: 20px; background-color: rgb(255, 255, 255); cursor:default">
                                     <div id="clock"></div>
                                 </div>

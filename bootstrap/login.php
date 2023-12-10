@@ -22,7 +22,30 @@ include "function/pesan_kilat.php";
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.css" rel="stylesheet">
+    <link href="css/sb-admin-2.css" rel="stylesheet">\
+
+    <style>
+    body {
+    position: relative;
+    }
+
+    body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('img/gedungsipil.jpg') center center fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: blur(8px); /* Ubah nilai blur sesuai keinginan Anda */
+    -webkit-backdrop-filter: blur(8px); /* Untuk dukungan browser WebKit (Chrome, Safari) */
+    backdrop-filter: blur(8px);
+    z-index: -2; /* Memastikan elemen ini berada di belakang konten lainnya */
+    }
+
+    </style>
 
 </head>
 
@@ -36,7 +59,7 @@ include "function/pesan_kilat.php";
                     <div class="card-body p-0 m-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row p-0 m-0">
-                            <img src="img/landscape.png" class="img-fluid mx-auto d-block" alt="" srcset="" style="object-fit: cover; width: 100%; height: 100%;">
+                            <img src="img/polinema.jpg" class="img-fluid mx-auto d-block" alt="" srcset="" style="object-fit: cover; width: 100%; height: 100%;">
                         </div>
                     </div>
                     <div class="card-body p-0">

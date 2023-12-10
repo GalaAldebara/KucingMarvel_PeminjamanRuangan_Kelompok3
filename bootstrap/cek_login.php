@@ -17,9 +17,9 @@ if ($cek > 0) {
         $_SESSION['no_telp'] = $data['no_telp'];
         
         header("location: Dashboard_admin2.php");
-    } else if ($data['level'] == 'user') {
+    } else if ($data['level'] == 'mahasiswa') {
         $_SESSION['nim'] = $data['nim'];
-        $_SESSION['level'] = 'user';
+        $_SESSION['level'] = 'mahasiswa';
         $_SESSION['nama'] = $data['nama'];
         $_SESSION['jurusan'] = $data['jurusan'];
         $_SESSION['no_telp'] = $data['no_telp'];

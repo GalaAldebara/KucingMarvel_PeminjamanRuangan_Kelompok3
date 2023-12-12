@@ -13,16 +13,14 @@ include 'php/koneksi.php';
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin Title</title>
+    <title>Admin Page</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
     <!-- STYLE MANUAL -->
     <style>
         /* Tambahkan CSS sesuai kebutuhan */
@@ -37,31 +35,89 @@ include 'php/koneksi.php';
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion " id="accordionSidebar">
+        <style>
+            .background {
+                background-color: #F0F0F0;
+                border-top-left-radius: 20px;
+                border-top-right-radius: 20px;
+                padding: 20px;
+            }
+
+            .cardInfo {
+
+                background-color: #F0F0F0;
+                border-radius: 20px;
+                padding: 20px;
+                margin: 5px;
+            }
+
+            .clock-container {
+                font-size: 18px;
+                margin-top: auto;
+            }
+
+            .sidebar-brand-icon img {
+                width: 60px;
+                height: auto;
+                object-fit: contain;
+            }
+
+            .bg-gradient-primary {
+                background-color: #FFB534;
+            }
+
+            .navbar-search {
+                max-width: 300px;
+                margin-left: 10px;
+            }
+
+            .btn-search {
+                background-color: #FFB534;
+                margin-left: 10px;
+            }
+
+            .dropdown {
+                margin-bottom: 20px;
+            }
+
+            #accordionSidebar {
+                background-color: #2c4182;
+            }
+
+            #daySelect {
+                margin-left: 20px;
+            }
+
+            #weekSelect,
+            #daySelect {
+                padding: 10px;
+                background-color: #2c4182;
+                color: white;
+                border-radius: 7px;
+            }
+        </style>
+        <!-- Sidebar -->
+        <ul class="navbar-nav sidebar sidebar-dark accordion " id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="Dashboard_2.php">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-beam"></i>
-                </div>
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="Dashboard.php">
+                <img src="img/logo.png" class="img-fluid mx-auto d-block" alt="" srcset="" style="object-fit: contain; width: 250%; height: 250%;">
                 <div class="sidebar-brand-text mx-3">Peminjaman Ruang</div>
             </a>
 
             <!-- Divider -->
-            <!-- <hr class="sidebar-divider my-0"> -->
+            <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="Dashboard_admin.php">
+                <a class="nav-link" href="Dashboard_admin2.php">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Dashboard</span></a>
             </li>
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-door-closed"></i>
                     <span>Lantai</span>
                 </a>
@@ -73,23 +129,18 @@ include 'php/koneksi.php';
                     </div>
                 </div>
             </li>
-
-            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRequestList" aria-expanded="true" aria-controls="collapseRequestList">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
+                    <span>Request List</span>
                 </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div id="collapseRequestList" class="collapse" aria-labelledby="headingRequestList" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                        <h6 class="collapse-header">List Lantai:</h6>
+                        <a class="collapse-item" href="login.html">Lantai 7</a>
+                        <a class="collapse-item" href="register.html">Lantai 8</a>
+                        <a class="collapse-item" href="forgot-password.html">Semua Lantai</a>
                         <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
                     </div>
                 </div>
             </li>
@@ -103,8 +154,6 @@ include 'php/koneksi.php';
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 
-
-
         </ul>
         <!-- End of Sidebar -->
 
@@ -115,21 +164,18 @@ include 'php/koneksi.php';
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
+                <nav class="navbar navbar-expand  topbar mb-4 static-top shadow" style="background-color: #FFB534">
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
 
                     <!-- Topbar Search -->
-                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
-                        method="GET" action="">
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="GET" action="">
                         <div class="input-group">
-                            <input type="text" name="search" class="form-control bg-light border-0 small"
-                                placeholder="Cari ruang..." aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" name="search" class="form-control bg-light border-0 small" placeholder="Cari ruang..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit">
+                                <button class="btn btn-primary" type="submit" style="background-color: #2c4182">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -141,18 +187,14 @@ include 'php/koneksi.php';
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
+                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
@@ -165,15 +207,13 @@ include 'php/koneksi.php';
 
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
                                 <!-- Counter - Alerts -->
                                 <span class="badge badge-danger badge-counter">3+</span>
                             </a>
                             <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
                                     Alerts Center
                                 </h6>
@@ -216,15 +256,13 @@ include 'php/koneksi.php';
 
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>
                                 <!-- Counter - Messages -->
                                 <span class="badge badge-danger badge-counter">7</span>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
                                     Message Center
                                 </h6>
@@ -264,14 +302,12 @@ include 'php/koneksi.php';
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['nama'] ?></span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
@@ -307,11 +343,9 @@ include 'php/koneksi.php';
                                 <h1 class="h3 mb-0 text-gray-800">Welcome Admin</h1>
                             </div>
                             <div class="col-sm-6 mb-4 text-right d-flex justify-content-end">
-                                <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                        class="fas fa-download fa-sm text-white-50" style="padding-top: 7px;"></i>
+                                <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50" style="padding-top: 7px;"></i>
                                     Generate Report</a>
-                                <div class="clock-container shadow-sm"
-                                    style="margin-left: 20px;padding: 5px 20px; border-radius: 20px; background-color: rgb(255, 255, 255); cursor:default">
+                                <div class="clock-container shadow-sm" style="margin-left: 20px;padding: 5px 20px; border-radius: 20px; background-color: rgb(255, 255, 255); cursor:default">
                                     <div id="clock"></div>
                                 </div>
                             </div>
@@ -323,261 +357,266 @@ include 'php/koneksi.php';
                         include('php/search.php');
                         ?>
                     </div>
+                    <div class="cardInfo">
+                        <div class="row" >
+                            <!-- Earnings (Monthly) Card Example -->
+                            <div class="col-xl-3 col-md-6 mb-4" style="cursor: default;">
+                                <div class="card border-left-primary shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                    Total Ruang</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                    <?php
+                                                    $queryCountJumlahRuang = "SELECT COUNT(id_ruang) AS jmlRuang FROM ruang WHERE lantai=7 OR lantai=8";
+                                                    $resultJumlahRuang = mysqli_query($koneksi, $queryCountJumlahRuang);
+                                                    while ($count = mysqli_fetch_array($resultJumlahRuang)) {
+                                                        $jumlahRuang = $count["jmlRuang"];
+                                                        echo $jumlahRuang;
+                                                    }
+                                                    ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
 
-                    <!-- Dropdown Hari -->
-                    <div class="dropdown" style="margin-bottom: 20px;">
-                        <button class="btn btn-primary dropdown-toggle" type="button" id="daftarRuangDropdown"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Senin
+                            <!-- Earnings (Monthly) Card Example -->
+                            <div class="col-xl-3 col-md-6 mb-4" style="cursor: default;">
+                                <div class="card border-left-success shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                    Ruang Available</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                    <?php
+                                                    $queryCountRuangAvail = "SELECT COUNT(id_ruang) AS jmlRuangAvail FROM ruang WHERE (lantai=7 OR lantai=8) AND status='available'";
+                                                    $resultJumlahRuangAvail = mysqli_query($koneksi, $queryCountRuangAvail);
+                                                    while ($countRA = mysqli_fetch_array($resultJumlahRuangAvail)) {
+                                                        $jumlahRA = $countRA["jmlRuangAvail"];
+                                                        echo $jumlahRA;
+                                                    }
+                                                    ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Earnings (Monthly) Card Example -->
+                            <div class="col-xl-3 col-md-6 mb-4" style="cursor: default;">
+                                <div class="card border-left-danger shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Ruang
+                                                    Unavailable</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                    <?php
+                                                    $queryCountRuangUnavail = "SELECT COUNT(id_ruang) AS jmlRuangUnavail FROM ruang WHERE (lantai=7 OR lantai=8) AND (status='unavailable' OR status='urgent')";
+                                                    $resultJumlahRuangUnavail = mysqli_query($koneksi, $queryCountRuangUnavail);
+                                                    while ($countRU = mysqli_fetch_array($resultJumlahRuangUnavail)) {
+                                                        $jumlahRU = $countRU["jmlRuangUnavail"];
+                                                        echo $jumlahRU;
+                                                    }
+                                                    ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pending Requests Card Example
+                            <div class="col-xl-3 col-md-6 mb-4" style="cursor: default;">
+                                <div class="card border-left-secondary shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
+                                                    Pending Requests</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                    <?php
+                                                    // $queryCountRuangPending = "SELECT COUNT(id_ruang) AS jmlRuangPend FROM ruang WHERE lantai=7 AND status='pending'";
+                                                    // $resultJumlahRuangPending = mysqli_query($koneksi, $queryCountRuangPending);
+                                                    // while ($countP = mysqli_fetch_array($resultJumlahRuangPending)) {
+                                                    //     $jumlahP = $countP["jmlRuangPend"];
+                                                    //     echo $jumlahP;
+                                                    // }
+                                                    ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Start Tabel -->
+                <div class="background">
+                    <div class="row m-2">
+                        <!-- Dropdown Minggu -->
+                        <select id="weekSelect" class="form-select" aria-label="Default select example">
+                            <option value="1" selected>Pilih Minggu</option>
+                            <?php
+                            $query_minggu = "SELECT * FROM minggu";
+                            $result2 = $koneksi->query($query_minggu);
+                            if ($result2) {
+                                while ($row2 = $result2->fetch_assoc()) {
+                            ?>
+                                    <option value="<?= $row2['kode_minggu'] ?>"><?= $row2['nama_minggu'] ?></option>
+                            <?php
+                                }
+                            }
+                            ?>
+                        </select>
+                        <!-- Select Hari -->
+                        <select id="daySelect" class="form-select" aria-label="Default select example">
+                            <option value="1" selected>Pilih Hari</option>
+                            <?php
+                            $query_hari = "SELECT * FROM hari";
+                            $result3 = $koneksi->query($query_hari);
+                            if ($result3) {
+                                while ($row3 = $result3->fetch_assoc()) {
+                            ?>
+                                    <option value="<?= $row3['kode_hari'] ?>"><?= $row3['nama_hari'] ?></option>
+                            <?php
+                                }
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div id="jadwalContainer">
+                        <!-- Hasil jadwal akan ditampilkan di sini -->
+                    </div>
+                </div>
+                <!-- Script Tabel Jadwal -->
+                <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                <script>
+                    $(document).ready(function() {
+                        // Ketika nilai drop-down berubah
+                        $("#daySelect, #weekSelect").change(function() {
+                            var selectedDay = $("#daySelect").val();
+                            var selectedWeek = $("#weekSelect").val();
+                            console.log(selectedDay);
+
+                            // Kirim request Ajax
+                            $.ajax({
+                                url: "prosesupdatejadwal.php", // Ganti dengan URL yang sesuai
+                                type: "POST",
+                                data: {
+                                    day: selectedDay,
+                                    week: selectedWeek
+                                },
+                                success: function(result) {
+                                    // Tampilkan hasil di div jadwalContainer
+                                    $("#jadwalContainer").html(result);
+                                },
+                                error: function(error) {
+                                    console.log("Error:", error);
+                                }
+                            });
+                        });
+                    });
+                </script>
+                <script>
+                    // !--Script Dropdown Hari-- >
+                    function updateDay(namaHari, kodeHari) {
+                        document.getElementById('daftarRuangDropdown').innerText = namaHari;
+                        // document.getElementById('daftarRuangDropdown') = kodeHari;
+
+                    }
+                    // Script Dropdown Minggu
+                    function updateWeek(namaMinggu, kodeMinggu) {
+                        document.getElementById('daftarMingguDropdown').innerText = namaMinggu;
+
+                        // Gunakan nilai kodeHari sesuai kebutuhan, contohnya:
+                        console.log("Kode Minggu: " + kodeMinggu);
+                    }
+                </script>
+
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+                <?php
+                include('php/footer.php');
+                ?>
+                <!-- End of Footer -->
+
+            </div>
+            <!-- End of Content Wrapper -->
+
+        </div>
+        <!-- End of Page Wrapper -->
+
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="daftarRuangDropdown">
-                            <a class="dropdown-item" href="#" onclick="updateDay('Senin')">Senin</a>
-                            <a class="dropdown-item" href="#" onclick="updateDay('Selasa')">Selasa</a>
-                            <a class="dropdown-item" href="#" onclick="updateDay('Rabu')">Rabu</a>
-                            <a class="dropdown-item" href="#" onclick="updateDay('Kamis')">Kamis</a>
-                            <a class="dropdown-item" href="#" onclick="updateDay('Jumat')">Jumat</a>
-                        </div>
                     </div>
-
-                    <script>
-                        function updateDay(day) {
-                            // Mengganti teks di dalam dropdown-toggle dengan nama hari yang dipilih
-                            document.getElementById('daftarRuangDropdown').innerText = day;
-                        }
-                    </script>
-
-                    <!-- Tabel -->
-                    <div style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden;">
-                        <table class="table" style="border-collapse: separate; border-spacing: 0;">
-                            <thead style="background-color: #4e73df; color: white; border-radius: 10px;">
-                                <tr>
-                                    <th scope="col">Ruang</th>
-                                    <th scope="col">Jam Ke-1</th>
-                                    <th scope="col">Jam Ke-2</th>
-                                    <th scope="col">Jam Ke-3</th>
-                                    <th scope="col">Jam Ke-4</th>
-                                    <th scope="col">Jam Ke-5</th>
-                                    <th scope="col">Jam Ke-6</th>
-                                    <th scope="col">Jam Ke-7</th>
-                                    <th scope="col">Jam Ke-8</th>
-                                    <th scope="col">Jam Ke-9</th>
-                                    <th scope="col">Jam Ke-10</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">LPR 1</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">LPR 2</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">LPR 3</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">LPR 4</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">LPR 5</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">LPR 6</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">LPR 7</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">LPR 8</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">LKJ 1</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                    <td>Available</td>
-                                    <td>Unvailable</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.
                     </div>
-                    <div class="col-lg-6 mb-4">
-
-                    </div>
-                    <!-- End of Main Content -->
-
-                    <!-- Footer -->
-                    <?php
-                    include('php/footer.php');
-                    ?>
-                    <!-- End of Footer -->
-
-                </div>
-                <!-- End of Content Wrapper -->
-
-            </div>
-            <!-- End of Page Wrapper -->
-
-            <!-- Scroll to Top Button-->
-            <a class="scroll-to-top rounded" href="#page-top">
-                <i class="fas fa-angle-up"></i>
-            </a>
-
-            <!-- Logout Modal-->
-            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <a class="btn btn-primary" href="logout.php">Logout</a>
-                        </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="logout.php">Logout</a>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- `````````````````````````````````````````````TEMPAT SCRIPT ````````````````````````````````````````` -->
-            <!-- `````````````````````````````````````````````TEMPAT SCRIPT ````````````````````````````````````````` -->
-            <!-- Bootstrap core JavaScript-->
-            <script src="vendor/jquery/jquery.min.js"></script>
-            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- `````````````````````````````````````````````TEMPAT SCRIPT ````````````````````````````````````````` -->
+        <!-- `````````````````````````````````````````````TEMPAT SCRIPT ````````````````````````````````````````` -->
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin-2.min.js"></script>
+        <!-- Page level plugins -->
+        <script src="vendor/chart.js/Chart.min.js"></script>
+        <!-- Page level custom scripts -->
+        <script src="js/demo/chart-area-demo.js"></script>
+        <script src="js/demo/chart-pie-demo.js"></script>
+        <script>
+            // Fungsi Jam
+            function updateClock() {
+                var now = new Date();
+                var hours = now.getHours();
+                var minutes = now.getMinutes();
+                var seconds = now.getSeconds();
+                // Formatting waktu menjadi HH:MM:SS
+                var timeString = padZero(hours) + ":" + padZero(minutes) + ":" + padZero(seconds);
+                // Memperbarui elemen dengan ID "clock" dengan waktu yang baru
+                document.getElementById("clock").innerText = timeString;
+            }
 
-            <!-- Core plugin JavaScript-->
-            <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+            function padZero(number) {
+                // Menambahkan nol di depan angka jika hanya satu digit
+                return (number < 10) ? "0" + number : number;
+            }
+            // Memperbarui waktu setiap detik
+            setInterval(updateClock, 1000);
+            // Memanggil fungsi updateClock untuk pertama kali saat halaman dimuat
+            updateClock();
+        </script>
 
-            <!-- Custom scripts for all pages-->
-            <script src="js/sb-admin-2.min.js"></script>
-
-            <!-- Page level plugins -->
-            <script src="vendor/chart.js/Chart.min.js"></script>
-
-            <!-- Page level custom scripts -->
-            <script src="js/demo/chart-area-demo.js"></script>
-            <script src="js/demo/chart-pie-demo.js"></script>
-            <script>
-                function cardClicked() {
-                    alert('Card Ditekan!');
-
-                }
-            </script>
-            <script>
-                function updateClock() {
-                    var now = new Date();
-                    var hours = now.getHours();
-                    var minutes = now.getMinutes();
-                    var seconds = now.getSeconds();
-
-                    // Formatting waktu menjadi HH:MM:SS
-                    var timeString = padZero(hours) + ":" + padZero(minutes) + ":" + padZero(seconds);
-
-                    // Memperbarui elemen dengan ID "clock" dengan waktu yang baru
-                    document.getElementById("clock").innerText = timeString;
-                }
-
-                function padZero(number) {
-                    // Menambahkan nol di depan angka jika hanya satu digit
-                    return (number < 10) ? "0" + number : number;
-                }
-
-                // Memperbarui waktu setiap detik
-                setInterval(updateClock, 1000);
-
-                // Memanggil fungsi updateClock untuk pertama kali saat halaman dimuat
-                updateClock();
-            </script>
 
 </body>
 

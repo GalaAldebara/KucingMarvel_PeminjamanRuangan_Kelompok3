@@ -37,23 +37,23 @@ include 'php/koneksi.php';
     <div id="wrapper">
         <!-- Sidebar -->
         <style>
-                .clock-container {
-                    font-size: 18px;
-                    margin-top: auto;
-                }
+            .clock-container {
+                font-size: 18px;
+                margin-top: auto;
+            }
 
-                .sidebar-brand-icon img {
-                    width: 60px;
-                    height: auto;
-                    object-fit: contain;
-                }
+            .sidebar-brand-icon img {
+                width: 60px;
+                height: auto;
+                object-fit: contain;
+            }
 
-                .bg-gradient-primary {
-                    background-color: #FFB534;
-                }
-                </style>
+            .bg-gradient-primary {
+                background-color: #FFB534;
+            }
+        </style>
         <ul class="navbar-nav sidebar sidebar-dark accordion " id="accordionSidebar" style="background-color: #2c4182">
-                
+
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="Dashboard.php">
                 <img src="img/logo.png" class="img-fluid mx-auto d-block" alt="" srcset="" style="object-fit: contain; width: 250%; height: 250%;">
@@ -142,7 +142,7 @@ include 'php/koneksi.php';
                                 background-color: #FFB534;
                                 margin-left: 10px;
                             }
-                            </style>
+                        </style>
                         <div class="input-group ">
                             <input type="text" name="search" class="form-control bg-light border-0 small" placeholder="Cari ruang..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
@@ -152,17 +152,6 @@ include 'php/koneksi.php';
                             </div>
                         </div>
                     </form>
-                    <!-- Topbar Search Day -->
-                    <!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="GET" action="">
-                        <div class="input-group">
-                            <input type="text" name="search" class="form-control bg-light border-0 small" placeholder="Cari ruang..." aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit" style="background-color: #2c4182">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form> -->
 
 
 
@@ -190,99 +179,99 @@ include 'php/koneksi.php';
                             </div>
                         </li>
 
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    Alerts Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
+                        <!-- Dropdown - Alerts -->
+                        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                            <h6 class="dropdown-header">
+                                Alerts Center
+                            </h6>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="mr-3">
+                                    <div class="icon-circle bg-primary">
+                                        <i class="fas fa-file-alt text-white"></i>
                                     </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                </div>
+                                <div>
+                                    <div class="small text-gray-500">December 12, 2019</div>
+                                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                </div>
+                            </a>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="mr-3">
+                                    <div class="icon-circle bg-success">
+                                        <i class="fas fa-donate text-white"></i>
                                     </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
-                                        </div>
+                                </div>
+                                <div>
+                                    <div class="small text-gray-500">December 7, 2019</div>
+                                    $290.29 has been deposited into your account!
+                                </div>
+                            </a>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="mr-3">
+                                    <div class="icon-circle bg-warning">
+                                        <i class="fas fa-exclamation-triangle text-white"></i>
                                     </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 7, 2019</div>
-                                        $290.29 has been deposited into your account!
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-warning">
-                                            <i class="fas fa-exclamation-triangle text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 2, 2019</div>
-                                        Spending Alert: We've noticed unusually high spending for your account.
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                            </div>
+                                </div>
+                                <div>
+                                    <div class="small text-gray-500">December 2, 2019</div>
+                                    Spending Alert: We've noticed unusually high spending for your account.
+                                </div>
+                            </a>
+                            <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                        </div>
                         </li>
 
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Message Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                            problem I've been having.</div>
-                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="...">
-                                        <div class="status-indicator"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">I have the photos that you ordered last month, how
-                                            would you like them sent to you?</div>
-                                        <div class="small text-gray-500">Jae Chun · 1d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="...">
-                                        <div class="status-indicator bg-warning"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Last month's report looks great, I am very happy with
-                                            the progress so far, keep up the good work!</div>
-                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                            told me that people say this to all dogs, even if they aren't good...</div>
-                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                            </div>
+                        <!-- Dropdown - Messages -->
+                        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                            <h6 class="dropdown-header">
+                                Message Center
+                            </h6>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="dropdown-list-image mr-3">
+                                    <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="...">
+                                    <div class="status-indicator bg-success"></div>
+                                </div>
+                                <div class="font-weight-bold">
+                                    <div class="text-truncate">Hi there! I am wondering if you can help me with a
+                                        problem I've been having.</div>
+                                    <div class="small text-gray-500">Emily Fowler · 58m</div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="dropdown-list-image mr-3">
+                                    <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="...">
+                                    <div class="status-indicator"></div>
+                                </div>
+                                <div>
+                                    <div class="text-truncate">I have the photos that you ordered last month, how
+                                        would you like them sent to you?</div>
+                                    <div class="small text-gray-500">Jae Chun · 1d</div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="dropdown-list-image mr-3">
+                                    <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="...">
+                                    <div class="status-indicator bg-warning"></div>
+                                </div>
+                                <div>
+                                    <div class="text-truncate">Last month's report looks great, I am very happy with
+                                        the progress so far, keep up the good work!</div>
+                                    <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="dropdown-list-image mr-3">
+                                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
+                                    <div class="status-indicator bg-success"></div>
+                                </div>
+                                <div>
+                                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone
+                                        told me that people say this to all dogs, even if they aren't good...</div>
+                                    <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                        </div>
                         </li>
 
                         <div class="topbar-divider d-none d-sm-block"></div>
@@ -290,7 +279,7 @@ include 'php/koneksi.php';
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $_SESSION['nama']?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $_SESSION['nama'] ?></span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -480,7 +469,7 @@ include 'php/koneksi.php';
                                 }
 
                                 echo '<div class="col-auto mb-4" href = "peminjaman.php">' .
-                                    '<div class="card ' . $bg_color . ' text-white shadow-lg" style="width: 120px; height: 120px; cursor: pointer;" onclick="showForm(\''.$row["nama_ruang"] . '\')">' .
+                                    '<div class="card ' . $bg_color . ' text-white shadow-lg" style="width: 120px; height: 120px; cursor: pointer;" onclick="showForm(\'' . $row["nama_ruang"] . '\')">' .
                                     '<div class="card-body">' .
                                     $row["nama_ruang"] .
                                     '<div class="text-white-50 small">' . $row["status"] . '</div>' .
@@ -493,7 +482,7 @@ include 'php/koneksi.php';
                         ?>
                         <div class="form-container" id="myForm" style="display: none; z-index: 1000; position: absolute; top: 50%; transform: translate(-50%, -50%);">
                             <div class="card bg-light" style="width: 300px; cursor: pointer; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                            <img src="img/landscape.png" alt="Form Image" style="width: 100%; height: auto; object-fit: cover; border-bottom: 1px solid #ddd;">
+                                <img src="img/landscape.png" alt="Form Image" style="width: 100%; height: auto; object-fit: cover; border-bottom: 1px solid #ddd;">
 
                                 <div class="card-body">
                                     <label for="nama" class="form-label">Nama:</label>
@@ -502,8 +491,8 @@ include 'php/koneksi.php';
                                     <label for="nim" class="form-label">NIM:</label>
                                     <input type="text" id="nim" name="nim" class="form-control" required>
 
-                                     <button type="button" class="btn btn-success" onclick="submitForm()">Kirim</button>
-                                     <button type="button" class="btn btn-secondary" onclick="closeForm()">Batal</button>
+                                    <button type="button" class="btn btn-success" onclick="submitForm()">Kirim</button>
+                                    <button type="button" class="btn btn-secondary" onclick="closeForm()">Batal</button>
                                 </div>
                             </div>
                         </div>
@@ -526,112 +515,112 @@ include 'php/koneksi.php';
                             }
 
                             function submitForm() {
-                            var nama = document.getElementById('nama').value;
-                            var nim = document.getElementById('nim').value;
-                            var namaRuang = document.getElementById('namaRUang').value;
+                                var nama = document.getElementById('nama').value;
+                                var nim = document.getElementById('nim').value;
+                                var namaRuang = document.getElementById('namaRUang').value;
 
-                            var form = document.getElementById('myForm');
-                            form.style.display = 'none';
+                                var form = document.getElementById('myForm');
+                                form.style.display = 'none';
 
-                            alert('Formulir telah dikirim: Nama - ' + nama + ', NIM - ' + nim);
+                                alert('Formulir telah dikirim: Nama - ' + nama + ', NIM - ' + nim);
                             }
                         </script>
-                    <!-- END DAFTAR RUANG -->
+                        <!-- END DAFTAR RUANG -->
+
+                    </div>
+
+                    <div class="col-lg-6 mb-4">
+
+                    </div>
+                    <!-- End of Main Content -->
+
+                    <!-- Footer -->
+                    <?php
+                    include('php/footer.php');
+                    ?>
+                    <!-- End of Footer -->
 
                 </div>
-
-                <div class="col-lg-6 mb-4">
-
-                </div>
-                <!-- End of Main Content -->
-
-                <!-- Footer -->
-                <?php
-                include('php/footer.php');
-                ?>
-                <!-- End of Footer -->
+                <!-- End of Content Wrapper -->
 
             </div>
-            <!-- End of Content Wrapper -->
+            <!-- End of Page Wrapper -->
 
-        </div>
-        <!-- End of Page Wrapper -->
+            <!-- Scroll to Top Button-->
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fas fa-angle-up"></i>
+            </a>
 
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
-        </a>
-
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="logout.php">Logout</a>
+            <!-- Logout Modal-->
+            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <a class="btn btn-primary" href="logout.php">Logout</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- `````````````````````````````````````````````TEMPAT SCRIPT ````````````````````````````````````````` -->
-        <!-- `````````````````````````````````````````````TEMPAT SCRIPT ````````````````````````````````````````` -->
-        <!-- Bootstrap core JavaScript-->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <!-- `````````````````````````````````````````````TEMPAT SCRIPT ````````````````````````````````````````` -->
+            <!-- `````````````````````````````````````````````TEMPAT SCRIPT ````````````````````````````````````````` -->
+            <!-- Bootstrap core JavaScript-->
+            <script src="vendor/jquery/jquery.min.js"></script>
+            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-        <!-- Core plugin JavaScript-->
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+            <!-- Core plugin JavaScript-->
+            <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-        <!-- Custom scripts for all pages-->
-        <script src="js/sb-admin-2.min.js"></script>
+            <!-- Custom scripts for all pages-->
+            <script src="js/sb-admin-2.min.js"></script>
 
-        <!-- Page level plugins -->
-        <script src="vendor/chart.js/Chart.min.js"></script>
+            <!-- Page level plugins -->
+            <script src="vendor/chart.js/Chart.min.js"></script>
 
-        <!-- Page level custom scripts -->
-        <script src="js/demo/chart-area-demo.js"></script>
-        <script src="js/demo/chart-pie-demo.js"></script>
-        <script>
-            function cardClicked() {
-                alert('Card Ditekan!');
+            <!-- Page level custom scripts -->
+            <script src="js/demo/chart-area-demo.js"></script>
+            <script src="js/demo/chart-pie-demo.js"></script>
+            <script>
+                function cardClicked() {
+                    alert('Card Ditekan!');
 
-            }
-        </script>
+                }
+            </script>
 
-        <!-- Script Jam RealTime -->
-        <script>
-            function updateClock() {
-                var now = new Date();
-                var hours = now.getHours();
-                var minutes = now.getMinutes();
-                var seconds = now.getSeconds();
+            <!-- Script Jam RealTime -->
+            <script>
+                function updateClock() {
+                    var now = new Date();
+                    var hours = now.getHours();
+                    var minutes = now.getMinutes();
+                    var seconds = now.getSeconds();
 
-                // Formatting waktu menjadi HH:MM:SS
-                var timeString = padZero(hours) + ":" + padZero(minutes) + ":" + padZero(seconds);
+                    // Formatting waktu menjadi HH:MM:SS
+                    var timeString = padZero(hours) + ":" + padZero(minutes) + ":" + padZero(seconds);
 
-                // Memperbarui elemen dengan ID "clock" dengan waktu yang baru
-                document.getElementById("clock").innerText = timeString;
-            }
+                    // Memperbarui elemen dengan ID "clock" dengan waktu yang baru
+                    document.getElementById("clock").innerText = timeString;
+                }
 
-            function padZero(number) {
-                // Menambahkan nol di depan angka jika hanya satu digit
-                return (number < 10) ? "0" + number : number;
-            }
+                function padZero(number) {
+                    // Menambahkan nol di depan angka jika hanya satu digit
+                    return (number < 10) ? "0" + number : number;
+                }
 
-            // Memperbarui waktu setiap detik
-            setInterval(updateClock, 1000);
+                // Memperbarui waktu setiap detik
+                setInterval(updateClock, 1000);
 
-            // Memanggil fungsi updateClock untuk pertama kali saat halaman dimuat
-            updateClock();
-        </script>
+                // Memanggil fungsi updateClock untuk pertama kali saat halaman dimuat
+                updateClock();
+            </script>
 </body>
 
 </html>

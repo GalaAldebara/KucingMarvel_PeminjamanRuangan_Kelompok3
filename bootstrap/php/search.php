@@ -30,7 +30,7 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
                     break;
             }
             echo '<div class="col-auto mb-4">' .
-                '<div class="card ' . $bg_color . ' text-black shadow-lg" style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked()">' .
+                '<div class="card ' . $bg_color . ' text-white shadow-lg" style="width: 120px; height: 120px; cursor: pointer;" onclick="cardClicked()">' .
                 '<div class="card-body">' .
                 $row["nama_ruang"] .
                 '<div class="text-black-50 small">' . $row["status"] . '</div>' .

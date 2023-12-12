@@ -15,22 +15,29 @@ if ($cek > 0) {
         $_SESSION['level'] = 'admin';
         $_SESSION['nama'] = $data['nama'];
         $_SESSION['no_telp'] = $data['no_telp'];
-        
+
         header("location: Dashboard_admin2.php");
+    } else if ($data['level'] == 'dosen') {
+        $_SESSION['nim'] = $data['nim'];
+        $_SESSION['level'] = 'dosen';
+        $_SESSION['nama'] = $data['nama'];
+        $_SESSION['jurusan'] = $data['jurusan'];
+        $_SESSION['no_telp'] = $data['no_telp'];
+
+        header("location: Dashboard.php");
     } else if ($data['level'] == 'mahasiswa') {
         $_SESSION['nim'] = $data['nim'];
         $_SESSION['level'] = 'mahasiswa';
         $_SESSION['nama'] = $data['nama'];
         $_SESSION['jurusan'] = $data['jurusan'];
         $_SESSION['no_telp'] = $data['no_telp'];
-        
+
         header("location: Dashboard.php");
     } else {
-        pesan('danger','Akun tidak valid. Silakan coba lagi.');
+        pesan('danger', 'Akun tidak valid. Silakan coba lagi.');
         header("location:login.php");
     }
 } else {
-    pesan('danger','nim atau password salah atau tidak ditemukan. Silakan coba lagi.');
+    pesan('danger', 'nim atau password salah atau tidak ditemukan. Silakan coba lagi.');
     header("location:login.php");
 }
-?>

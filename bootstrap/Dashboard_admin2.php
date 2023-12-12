@@ -37,11 +37,13 @@ include 'php/koneksi.php';
     <div id="wrapper">
         <!-- Sidebar -->
         <style>
-            .background {
+            .background,
+            .cardInfo {
                 background-color: #F0F0F0;
                 border-top-left-radius: 20px;
                 border-top-right-radius: 20px;
                 padding: 20px;
+
             }
 
             .cardInfo {
@@ -91,6 +93,13 @@ include 'php/koneksi.php';
 
             #weekSelect,
             #daySelect {
+                padding: 10px;
+                background-color: #2c4182;
+                color: white;
+                border-radius: 7px;
+            }
+
+            #jamSelect {
                 padding: 10px;
                 background-color: #2c4182;
                 color: white;
@@ -204,56 +213,6 @@ include 'php/koneksi.php';
                                 </form>
                             </div>
                         </li>
-
-                        <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
-                            </a>
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    Alerts Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 7, 2019</div>
-                                        $290.29 has been deposited into your account!
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-warning">
-                                            <i class="fas fa-exclamation-triangle text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 2, 2019</div>
-                                        Spending Alert: We've noticed unusually high spending for your account.
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                            </div>
-                        </li>
-
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -358,8 +317,28 @@ include 'php/koneksi.php';
                         ?>
                     </div>
                     <div class="cardInfo">
-                        <div class="row" >
-                            <!-- Earnings (Monthly) Card Example -->
+                        <h3>Informasi Ruang</h3>
+                        <!-- Start Pemilihan Jam -->
+                        <select id="jamSelect" class="form-select" aria-label="Default select example" style="margin-bottom:10px;">
+                            <option value="1" selected>Pilih Jam</option>
+                            <?php
+                            $query_jam = "SELECT * FROM jp";
+                            $result_jam = $koneksi->query($query_jam);
+                            if ($result_jam) {
+                                while ($row_jam = $result_jam->fetch_assoc()) {
+                            ?>
+                                    <option value="<?= $row_jam['kode_jp'] ?>"> <?= $row_jam['kode_jp'] . '. ' . $row_jam['jp_mulai'] . '~' . $row_jam['jp_selesai'] ?></option>
+                            <?php
+                                }
+                            }
+                            ?>
+                        </select>
+                        <div class="PemilihanJam">
+                            Memunculkan kotak-kotak dari pemilihan jam (nantinya klo sudah tersambung logic)
+                        </div>
+                        <!-- End Pemilihan Jam -->
+                        <div class="row">
+                            <!-- Info Jumlah Ruang-->
                             <div class="col-xl-3 col-md-6 mb-4" style="cursor: default;">
                                 <div class="card border-left-primary shadow h-100 py-2">
                                     <div class="card-body">
@@ -382,9 +361,7 @@ include 'php/koneksi.php';
                                     </div>
                                 </div>
                             </div>
-
-
-                            <!-- Earnings (Monthly) Card Example -->
+                            <!-- Info Ruang Available -->
                             <div class="col-xl-3 col-md-6 mb-4" style="cursor: default;">
                                 <div class="card border-left-success shadow h-100 py-2">
                                     <div class="card-body">
@@ -408,7 +385,7 @@ include 'php/koneksi.php';
                                 </div>
                             </div>
 
-                            <!-- Earnings (Monthly) Card Example -->
+                            <!-- Info Ruang Unavailable -->
                             <div class="col-xl-3 col-md-6 mb-4" style="cursor: default;">
                                 <div class="card border-left-danger shadow h-100 py-2">
                                     <div class="card-body">
@@ -431,35 +408,12 @@ include 'php/koneksi.php';
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Pending Requests Card Example
-                            <div class="col-xl-3 col-md-6 mb-4" style="cursor: default;">
-                                <div class="card border-left-secondary shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
-                                                    Pending Requests</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                    <?php
-                                                    // $queryCountRuangPending = "SELECT COUNT(id_ruang) AS jmlRuangPend FROM ruang WHERE lantai=7 AND status='pending'";
-                                                    // $resultJumlahRuangPending = mysqli_query($koneksi, $queryCountRuangPending);
-                                                    // while ($countP = mysqli_fetch_array($resultJumlahRuangPending)) {
-                                                    //     $jumlahP = $countP["jmlRuangPend"];
-                                                    //     echo $jumlahP;
-                                                    // }
-                                                    ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
                         </div>
                     </div>
                 </div>
                 <!-- Start Tabel -->
                 <div class="background">
+                    <h3>Informasi Jadwal Mingguan</h3>
                     <div class="row m-2">
                         <!-- Dropdown Minggu -->
                         <select id="weekSelect" class="form-select" aria-label="Default select example">
@@ -524,6 +478,30 @@ include 'php/koneksi.php';
                             });
                         });
                     });
+
+                    // $(document).ready(function() {
+                    //     // Ketika nilai drop-down berubah
+                    //     $("#jamSelect").change(function() {
+                    //         var selectedHour = $("#jamSelect").val();
+                    //         console.log(selectedHour);
+
+                    //         // Kirim request Ajax
+                    //         $.ajax({
+                    //             url: "prosesUpdateJam.php", // Ganti dengan URL yang sesuai
+                    //             type: "POST",
+                    //             data: {
+                    //                 jam: selectedHour
+                    //             },
+                    //             success: function(result) {
+                    //                 // Tampilkan hasil di div jadwalContainer
+                    //                 $("#PemilihanJam").html(result);
+                    //             },
+                    //             error: function(error) {
+                    //                 console.log("Error:", error);
+                    //             }
+                    //         });
+                    //     });
+                    // });
                 </script>
                 <script>
                     // !--Script Dropdown Hari-- >

@@ -27,7 +27,6 @@ $result = $koneksi->query($query_jadwal);
                 <th scope="col" class="text-nowrap">Jam Ke-9</th>
                 <th scope="col" class="text-nowrap">Jam Ke-10</th>
                 <th scope="col" class="text-nowrap">Jam Ke-11</th>
-                <th scope="col" class="text-nowrap">Jam Ke-12</th>
             </tr>
         </thead>
         <tbody>
@@ -60,7 +59,7 @@ $result = $koneksi->query($query_jadwal);
                         echo "<tr>";
                         echo "<th scope='row'>" . $hariData['nama_ruang'] . "</th>";
 
-                        for ($jam_count = 1; $jam_count <= 12; $jam_count++) {
+                        for ($jam_count = 1; $jam_count <= 11; $jam_count++) {
                             $availability = "Available"; // Default is Available
 
                             // Periksa setiap jadwal pada hari ini
@@ -72,8 +71,10 @@ $result = $koneksi->query($query_jadwal);
                             }
                             if ($availability == "Available") {
                                 echo "<td class='bg-success'>$availability</td>";
+                            } else if ($availability == "Unavailable") {
+                                echo "<td class='bg-warning'>$availability</td>";
                             } else {
-                                echo "<td>$availability</td>";
+                                echo "<td calss='bg-danger'>$availability</td>";
                             }
                         }
 
